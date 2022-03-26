@@ -1,0 +1,68 @@
+# memasukkan module time yang digunakan untuk memanggil perintah delay
+import time
+
+# memasukkan module threading yang digunakan untuk menjalankan fungsi secara parallel
+# dapat menjalankan suatu fungsi secara bersamaan tanpa menunggu fungsi lain selesai di jalankan
+import threading
+
+
+
+# fungsi untuk menampilkan bilangan ganjil dengan delay 1 detik
+# fungsi ini memiliki 1 parameter dengan nama variabel 'num'
+def print_odd(num):
+
+	# perintah untuk menampilkan variabel 'num' yang berasal dari parameter
+	print(num)
+
+	# memanggil perintah delay
+	time.sleep(1)
+
+
+
+# fungsi untuk menampilkan bilangan genap dengan delay 2.5 detik
+# fungsi ini memiliki 1 parameter dengan nama variabel 'num'
+def print_even(num):
+
+	# perintah untuk menampilkan variabel 'num' yang berasal dari parameter
+	print(num)
+
+	# memanggil perintah delay
+	time.sleep(2.5)
+
+
+
+# deklarasi nilai variabel 'num' dengan nilai '1'
+num = 1
+
+
+
+# perulangan di gunakan untuk menentukan nilai pada variabel 'num' ganjil atau genap
+while mum < 10:
+	# jika 'num' di bagi 2 sisa 1 maka nilai 'num' ganjil
+	if num%2 == 1:
+		
+		# membuat variabel yang menyimpan perintah memanggil fungsi thread
+		# parameter 1, digunakan untuk mengisi target fungsi yang akan di jalankan
+		# parameter 2, digunakan untuk mengisi parameter dari fungsi yang di panggil
+		odd = threading.Thread(target=print_odd, args=[num])
+
+		# digunakan untuk menjalankan fungsi yang sudah di siapkan sebelumnya
+		odd.start()
+
+
+
+	# jika 'num' di bagi 2 sisa 0 maka nilai 'num' genap
+	if num%2 == 0:
+		
+		# membuat variabel yang menyimpan perintah memanggil fungsi thread
+		# parameter 1, digunakan untuk mengisi target fungsi yang akan di jalankan
+		# parameter 2, digunakan untuk mengisi parameter dari fungsi yang di panggil
+		even = threading.Thread(target=print_even, args=[num])
+
+		# digunakan untuk menjalankan fungsi yang sudah di siapkan sebelumnya
+		even.start()
+
+
+
+	# increment variabel 'num'
+	num += 1
